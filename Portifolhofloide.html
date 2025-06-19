@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio de Floide Raúl</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #1e293b;
+      line-height: 1.6;
+      font-size: 20px;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      animation: slideShow 24s infinite ease-in-out;
+      opacity: 0.1;
+    }
+    @keyframes slideShow {
+      0% { background-image: url('https://source.unsplash.com/1600x900?network'); }
+      25% { background-image: url('https://source.unsplash.com/1600x900?infraestrutura'); }
+      50% { background-image: url('https://source.unsplash.com/1600x900?server'); }
+      75% { background-image: url('https://source.unsplash.com/1600x900?sistemas'); }
+      100% { background-image: url('https://source.unsplash.com/1600x900?network'); }
+    }
+    header {
+      background-color: #0f172a;
+      color: white;
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 2.2rem;
+    }
+    nav button {
+      background: none;
+      border: none;
+      color: white;
+      margin-left: 1rem;
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    nav button:hover {
+      color: #38bdf8;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      padding: 2.5rem;
+    }
+    .gallery-item {
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .description {
+      display: none;
+      position: relative;
+      margin-top: 1rem;
+      background: #ffffffee;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      font-size: 1.3rem;
+    }
+    .description.show {
+      display: block;
+    }
+    .section {
+      display: none;
+      padding: 2rem;
+      margin: 0 2.5rem;
+      background: #ffffffee;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      font-size: 1.3rem;
+    }
+    .section.show {
+      display: block;
+    }
+    footer {
+      background-color: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 1.5rem;
+      margin-top: 3rem;
+      font-size: 1.3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Floide Raúl</h1>
+    <nav>
+      <button onclick="toggleSection('sobre')">Sobre Mim</button>
+      <button onclick="toggleSection('habilidades')">Habilidades</button>
+      <button onclick="toggleSection('experiencia')">Experiência</button>
+      <button onclick="toggleSection('contato')">Contato</button>
+    </nav>
+  </header>
+
+  <div class="gallery">
+    <div class="gallery-item" onclick="toggleDescription('desc1')">
+      <img src="https://source.unsplash.com/400x300/?network" alt="Network">
+      <div id="desc1" class="description">Projetos relacionados a redes, como VLANs, roteamento dinâmico e configuração de switches e roteadores Cisco.</div>
+    </div>
+    <div class="gallery-item" onclick="toggleDescription('desc2')">
+      <img src="https://source.unsplash.com/400x300/?infraestrutura" alt="Infraestrutura">
+      <div id="desc2" class="description">Trabalhos com infraestrutura física e lógica de redes, incluindo cabeamento estruturado, racks, patch panels e segurança física.</div>
+    </div>
+    <div class="gallery-item" onclick="toggleDescription('desc3')">
+      <img src="https://source.unsplash.com/400x300/?server" alt="Server">
+      <div id="desc3" class="description">Experiência com servidores físicos e virtuais, Windows Server, serviços de diretório, DNS, DHCP e Hyper-V/VMware.</div>
+    </div>
+    <div class="gallery-item" onclick="toggleDescription('desc4')">
+      <img src="https://source.unsplash.com/400x300/?sistemas" alt="Sistemas">
+      <div id="desc4" class="description">Implantação e suporte a sistemas operacionais, softwares corporativos e automação de tarefas com scripts.</div>
+    </div>
+  </div>
+
+  <section id="sobre" class="section">
+    <h2>Sobre Mim</h2>
+    <p>Sou Floide Raúl, apaixonado por redes, infraestrutura e tecnologia. Tenho experiência com Active Directory, pfSense, VMware e GNS3.</p>
+  </section>
+
+  <section id="habilidades" class="section">
+    <h2>Habilidades</h2>
+    <ul>
+      <li>Redes: CCNA, VLAN, Roteamento</li>
+      <li>Infraestrutura: pfSense, VMware, Windows Server</li>
+      <li>Ferramentas: Proxmox, GNS3, Packet Tracer</li>
+    </ul>
+  </section>
+
+  <section id="experiencia" class="section">
+    <h2>Experiência</h2>
+    <ul>
+      <li>Universidade Metodista de Angola – Analista de Sistemas (2020–2025)</li>
+      <li>Supervisor de Help Desk (2022–2025)</li>
+      <li>Aprendiz de Infraestrutura (desde 2025)</li>
+    </ul>
+  </section>
+
+  <section id="contato" class="section">
+    <h2>Contato</h2>
+    <p>Email: floide.raul@gmail.com<br>Telefone: +244 932768559 / +244 991481467 / +244 951101269</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Floide Raúl. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('.section');
+    let currentVisible = null;
+
+    function toggleSection(id) {
+      const section = document.getElementById(id);
+      if (currentVisible && currentVisible !== section) {
+        currentVisible.classList.remove('show');
+      }
+      if (section.classList.contains('show')) {
+        section.classList.remove('show');
+        currentVisible = null;
+      } else {
+        section.classList.add('show');
+        currentVisible = section;
+      }
+    }
+
+    const descriptions = document.querySelectorAll('.description');
+    function toggleDescription(id) {
+      descriptions.forEach(desc => {
+        if (desc.id !== id) {
+          desc.classList.remove('show');
+        }
+      });
+      const target = document.getElementById(id);
+      target.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
+
